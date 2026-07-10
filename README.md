@@ -12,8 +12,6 @@ locally** (no customer data leaves the machine) on Ollama + Qdrant.
 
 ## Results
 
-*(Fill these in after Phases 4–5. This section is what people read first.)*
-
 **Answer quality** (LLM-as-judge via qwen2.5:7b — a different model family from the
 llama3 generator, to avoid self-preference bias — n = 89 test emails, 1–5 scale):
 
@@ -79,7 +77,7 @@ reranker experiments target.
 ```
 Incoming email ─► embed query ─► Qdrant retrieval (top-k) ─► LLM draft (grounded + cited)
                                         ▲
-                              knowledge base (chunked + embedded)
+                              knowledge base (atomic answers, embedded)
 ```
 
 - **Embeddings:** mxbai-embed-large (via Ollama)
@@ -91,22 +89,23 @@ Incoming email ─► embed query ─► Qdrant retrieval (top-k) ─► LLM dra
 ## Setup
 
 ```bash
-docker compose up -d                 # start Qdrant
 ollama pull llama3                   # generation model
 ollama pull mxbai-embed-large        # embedding model
+ollama pull qwen2.5:7b               # LLM-as-judge model (Phase 4b eval)
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
 
-python -m src.ingest                 # build the index
+python -m src.ingest                 # embeds the index; Qdrant runs embedded/local
+                                      # (no server) and creates qdrant_db/ on first run
 uvicorn src.api:app --reload         # serve
 ```
 
 ## Evaluation
 
 ```bash
-python -m src.eval.retrieval_eval    # recall@k / precision@k
-python -m src.eval.answer_eval       # LLM-as-judge on draft quality
+python -m src.eval.retrieval_eval    # recall@k, MRR, hit@1
+python -m src.eval.answer_eval       # faithfulness, relevance, completeness (LLM-as-judge) + hallucinated citation rate
 ```
 
 ## Project structure
@@ -114,9 +113,10 @@ python -m src.eval.answer_eval       # LLM-as-judge on draft quality
 ```
 data/knowledge_base/   source KB documents
 data/eval/             test emails + reference answers / relevant-doc labels
-src/ingest.py          chunk + embed + index
+src/ingest.py          load, dedupe, embed, index
 src/retrieve.py        retrieval
 src/generate.py        grounded draft generation
 src/api.py             FastAPI app
-src/eval/              retrieval metrics + LLM-as-judge
+src/eval/retrieval_eval.py   recall@k, MRR, hit@1
+src/eval/answer_eval.py      LLM-as-judge (faithfulness, relevance, completeness) + hallucinated citation rate
 ```

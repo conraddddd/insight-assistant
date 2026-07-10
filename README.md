@@ -22,14 +22,32 @@ locally** (no customer data leaves the machine) on Ollama + Qdrant.
 | Relevance     | _._   |
 | Completeness  | _._   |
 
-**Retrieval experiment** — effect of each change on recall@5:
+**Retrieval experiment** (n = 89 eval queries, top_k = 5) — recall/MRR across candidate
+configurations. No precision@k: this eval set has exactly one correct `answer_id` per
+question, so precision@k collapses to a rescaled recall@k with no independent signal.
 
-| Configuration                    | Recall@5 | Precision@5 |
-|----------------------------------|----------|-------------|
-| Baseline (naive vector, 512-tok) | 0.__     | 0.__        |
-| + tuned chunk size (___ tok)     | 0.__     | 0.__        |
-| + hybrid (BM25 + vector)         | 0.__     | 0.__        |
-| + reranker                       | **0.__** | **0.__**    |
+| Configuration                              | Recall@1 | Recall@3 | Recall@5 | MRR       |
+|---------------------------------------------|----------|----------|----------|-----------|
+| Baseline (raw vector, 1 answer = 1 chunk)    | 0.820    | 0.933    | 0.944    | 0.875     |
+| + tuned chunk size (___ tok)                 | 0.__     | 0.__     | 0.__     | 0.__      |
+| + hybrid (BM25 + vector)                     | 0.__     | 0.__     | 0.__     | 0.__      |
+| + reranker                                   | **0.__** | **0.__** | **0.__** | **0.__**  |
+
+*Paraphrase-pair subset* (3 `answer_id`s each shared by 2 differently-worded questions,
+n = 6 — illustrative only, not statistically meaningful):
+
+| Metric   | All queries (n=89) | Paraphrase-pair subset (n=6) |
+|----------|---------------------|-------------------------------|
+| Recall@1 | 0.820               | 0.500                        |
+| Recall@3 | 0.933               | 0.667                         |
+| Recall@5 | 0.944               | 0.667                         |
+| MRR      | 0.875               | 0.583                         |
+| Hit@1    | 0.820               | 0.500                         |
+
+The paraphrase-pair subset lags the full set on every metric (e.g. Recall@1 0.50 vs.
+0.82), a small early signal — n=6, not conclusive on its own — that reworded queries are
+where this baseline is weakest, which is exactly what the hybrid and reranker passes in
+this experiment are meant to target.
 
 *Takeaway:* _one sentence on what moved the needle and why._
 

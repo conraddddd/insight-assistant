@@ -198,3 +198,44 @@ src/eval/experiment_hybrid.py    Phase 5: hybrid BM25 + vector (RRF) retrieval e
 src/eval/experiment_reranker.py  Phase 5: cross-encoder reranker retrieval eval
 src/eval/answer_eval_chunking.py Phase 5: LLM-as-judge eval against the production config
 ```
+
+## Extending to production
+
+The portfolio version prioritizes measurability and reproducibility over deployment
+concerns; a production deployment would address the following:
+
+- **Ingestion trigger and incrementality.** Right now ingestion is a one-shot batch job,
+  triggered by hand (`python -m src.ingest`, `python -m src.chunking`) and rebuilding each
+  collection from scratch every time (`build_collection` deletes and recreates it).
+  Production ingestion would instead be scheduled, event-driven (e.g. a webhook firing
+  when a source KB article changes), or API-triggered, and — more importantly —
+  incremental: detecting which documents actually changed since the last run and
+  upserting only those, rather than re-embedding and reindexing the entire KB on every
+  run regardless of what changed.
+
+- **Customer-facing citation transformation.** The `[19a]`-style bracket markers in a
+  draft are internal scaffolding — they exist for auditability and so the eval harness can
+  check for hallucinated citations, not because a customer should see raw bracket ids in
+  their inbox. A production system would strip them before sending, convert them to
+  footnote-style links pointing at the source KB article, or keep them visible alongside a
+  source panel; which of these is right depends on the domain — a regulated industry might
+  want visible sourcing by default, a consumer product might want the reply to read as
+  plain, unannotated prose.
+
+- **Spoofed-citation policy.** Currently, `cited_ids`/`cited_sub_ids` silently filters any
+  hallucinated citation out of the response at the API layer (`src/api.py`) — if the model
+  cites something that wasn't actually retrieved, it just quietly disappears from what the
+  caller sees, with no signal that generation produced a bad citation in the first place.
+  Production alternatives include regenerating the draft automatically when a hallucinated
+  citation is detected, failing closed (refusing to return a draft at all rather than
+  risk silently editing one), or flagging the reply for human review before it ever
+  reaches the customer — the right choice is domain-dependent, e.g. healthcare or finance
+  would likely favor fail-closed or human review over silent filtering.
+
+- **Monitoring hooks.** The evaluation harness (`src/eval/`) currently only runs at
+  development time, invoked by hand against the fixed 89-query eval set. A production
+  deployment would run the same evaluation code continuously against a sampled slice of
+  real traffic, with alerting wired to score regressions — faithfulness dropping, or
+  hallucination rate crossing a threshold — so a degradation is caught automatically
+  instead of only being visible the next time someone happens to rerun the eval scripts by
+  hand.

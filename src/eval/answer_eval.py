@@ -183,8 +183,20 @@ def judge_completeness(gold_answer: str, draft: str) -> dict | None:
     return call_judge(COMPLETENESS_SYSTEM, user)
 
 
-def evaluate_query(question: str, gold_answer_id: int, answer_by_id: dict[int, str]) -> dict:
-    chunks = retrieve(question, top_k=TOP_K)
+def evaluate_query(
+    question: str,
+    gold_answer_id: int,
+    answer_by_id: dict[int, str],
+    retrieve_fn=lambda q: retrieve(q, top_k=TOP_K),
+    is_hit_fn=lambda gold_answer_id, retrieved_ids: gold_answer_id in retrieved_ids,
+) -> dict:
+    """retrieve_fn and is_hit_fn default to the baseline retrieve() and a
+    plain membership check, but Phase 5's winning-config rerun
+    (answer_eval_chunking.py) substitutes both: a retrieve_fn querying the
+    kb_docs_concat collection, and an is_hit_fn that checks whether the chunk
+    containing gold_answer_id was retrieved, since the retrieval unit changed
+    from single answers to multi-answer chunks."""
+    chunks = retrieve_fn(question)
     draft = generate(question, chunks)
 
     retrieved_ids = [c.answer_id for c in chunks]
@@ -201,7 +213,7 @@ def evaluate_query(question: str, gold_answer_id: int, answer_by_id: dict[int, s
         "retrieved_ids": retrieved_ids,
         "cited_ids": sorted(cited),
         "hallucinated_citations": hallucinated,
-        "retrieval_hit": gold_answer_id in retrieved_ids,
+        "retrieval_hit": is_hit_fn(gold_answer_id, retrieved_ids),
         "faithfulness": faithfulness,
         "relevance": relevance,
         "completeness": completeness,
@@ -242,10 +254,11 @@ def summarize(records: list[dict]) -> dict:
     }
 
 
-def print_markdown_table(aggregate: dict, paraphrase: dict) -> None:
+def print_markdown_table(aggregate: dict, paraphrase: dict, label: str = "Baseline") -> None:
     def mean_str(block: dict) -> str:
         return f"{block['mean']:.3f}" if block["mean"] is not None else "n/a"
 
+    print(f"### {label}")
     print(f"| Metric | All queries (n={aggregate['n']}) | Paraphrase-pair subset (n={paraphrase['n']}, illustrative) |")
     print("|---|---|---|")
     print(f"| Faithfulness (mean 1-5) | {mean_str(aggregate['faithfulness'])} | {mean_str(paraphrase['faithfulness'])} |")

@@ -1,10 +1,15 @@
 {
+  "config": {
+    "name": "cross_encoder_reranker",
+    "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "candidate_depth": 10
+  },
   "aggregate": {
-    "recall@1": 0.8202247191011236,
-    "recall@3": 0.9325842696629213,
-    "recall@5": 0.9438202247191011,
-    "mrr": 0.8749063670411984,
-    "hit@1": 0.8202247191011236,
+    "recall@1": 0.797752808988764,
+    "recall@3": 0.9101123595505618,
+    "recall@5": 0.9213483146067416,
+    "mrr": 0.851123595505618,
+    "hit@1": 0.797752808988764,
     "n": 89
   },
   "paraphrase_subset": {
@@ -15,11 +20,11 @@
       58
     ],
     "metrics": {
-      "recall@1": 0.5,
+      "recall@1": 0.6666666666666666,
       "recall@3": 0.6666666666666666,
       "recall@5": 0.6666666666666666,
-      "mrr": 0.5833333333333334,
-      "hit@1": 0.5,
+      "mrr": 0.6666666666666666,
+      "hit@1": 0.6666666666666666,
       "n": 6
     }
   },
@@ -32,7 +37,7 @@
         0,
         16,
         77,
-        76,
+        2,
         47
       ],
       "rank": 1,
@@ -44,10 +49,10 @@
       "gold_answer_id": 1,
       "retrieved_ids": [
         1,
-        12,
         13,
         22,
-        37
+        12,
+        10
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -58,10 +63,10 @@
       "gold_answer_id": 2,
       "retrieved_ids": [
         2,
-        47,
-        79,
         70,
-        53
+        47,
+        72,
+        65
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -71,14 +76,14 @@
       "original_answer_id": 3,
       "gold_answer_id": 3,
       "retrieved_ids": [
+        57,
         3,
-        66,
         32,
-        45,
+        66,
         25
       ],
-      "rank": 1,
-      "reciprocal_rank": 1.0
+      "rank": 2,
+      "reciprocal_rank": 0.5
     },
     {
       "question": "Can I cancel my order?",
@@ -87,9 +92,9 @@
       "retrieved_ids": [
         4,
         18,
-        25,
         79,
-        21
+        44,
+        12
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -100,10 +105,10 @@
       "gold_answer_id": 5,
       "retrieved_ids": [
         5,
+        47,
+        70,
         22,
-        8,
-        4,
-        70
+        65
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -131,7 +136,7 @@
         68,
         42,
         46,
-        21
+        39
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -143,9 +148,9 @@
       "retrieved_ids": [
         8,
         27,
-        22,
+        41,
         79,
-        47
+        70
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -158,8 +163,8 @@
         9,
         18,
         46,
-        79,
-        68
+        21,
+        79
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -170,10 +175,10 @@
       "gold_answer_id": 10,
       "retrieved_ids": [
         10,
-        34,
         27,
-        17,
-        22
+        48,
+        34,
+        73
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -184,10 +189,10 @@
       "gold_answer_id": 11,
       "retrieved_ids": [
         11,
-        14,
         85,
+        14,
         66,
-        28
+        17
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -198,10 +203,10 @@
       "gold_answer_id": 12,
       "retrieved_ids": [
         12,
-        79,
-        22,
-        47,
-        27
+        27,
+        41,
+        37,
+        79
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -212,9 +217,9 @@
       "gold_answer_id": 13,
       "retrieved_ids": [
         13,
-        1,
         78,
-        37,
+        47,
+        1,
         53
       ],
       "rank": 1,
@@ -225,11 +230,11 @@
       "original_answer_id": 14,
       "gold_answer_id": 14,
       "retrieved_ids": [
-        11,
-        14,
         85,
-        28,
-        20
+        14,
+        11,
+        66,
+        54
       ],
       "rank": 2,
       "reciprocal_rank": 0.5
@@ -242,8 +247,8 @@
         15,
         82,
         73,
-        75,
-        13
+        17,
+        16
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -254,10 +259,10 @@
       "gold_answer_id": 16,
       "retrieved_ids": [
         16,
-        47,
+        41,
         27,
-        53,
-        55
+        37,
+        12
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -268,9 +273,9 @@
       "gold_answer_id": 17,
       "retrieved_ids": [
         17,
-        20,
         45,
-        11,
+        54,
+        22,
         41
       ],
       "rank": 1,
@@ -282,10 +287,10 @@
       "gold_answer_id": 18,
       "retrieved_ids": [
         18,
-        79,
         4,
+        79,
         21,
-        25
+        41
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -298,7 +303,7 @@
         19,
         25,
         35,
-        60,
+        29,
         63
       ],
       "rank": 1,
@@ -311,9 +316,9 @@
       "retrieved_ids": [
         20,
         41,
-        54,
-        28,
-        15
+        73,
+        75,
+        54
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -326,7 +331,7 @@
         21,
         18,
         68,
-        66,
+        25,
         60
       ],
       "rank": 1,
@@ -338,10 +343,10 @@
       "gold_answer_id": 22,
       "retrieved_ids": [
         22,
-        5,
-        47,
+        6,
         33,
-        27
+        27,
+        47
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -351,10 +356,10 @@
       "original_answer_id": 23,
       "gold_answer_id": 23,
       "retrieved_ids": [
-        65,
         44,
+        65,
         72,
-        56,
+        69,
         74
       ],
       "rank": null,
@@ -367,8 +372,8 @@
       "retrieved_ids": [
         24,
         80,
-        23,
-        36,
+        9,
+        78,
         43
       ],
       "rank": 1,
@@ -382,8 +387,8 @@
         25,
         45,
         48,
-        71,
-        54
+        54,
+        51
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -394,10 +399,10 @@
       "gold_answer_id": 26,
       "retrieved_ids": [
         26,
+        82,
         9,
-        81,
-        46,
-        18
+        64,
+        81
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -409,9 +414,9 @@
       "retrieved_ids": [
         27,
         48,
-        34,
-        47,
-        41
+        51,
+        73,
+        47
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -424,8 +429,8 @@
         28,
         54,
         20,
-        14,
-        45
+        45,
+        75
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -436,10 +441,10 @@
       "gold_answer_id": 29,
       "retrieved_ids": [
         29,
-        45,
         63,
-        25,
-        75
+        45,
+        48,
+        25
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -450,10 +455,10 @@
       "gold_answer_id": 30,
       "retrieved_ids": [
         30,
-        35,
         82,
         17,
-        47
+        55,
+        35
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -463,28 +468,28 @@
       "original_answer_id": 31,
       "gold_answer_id": 31,
       "retrieved_ids": [
+        44,
         49,
         31,
         62,
-        44,
-        64
+        65
       ],
-      "rank": 2,
-      "reciprocal_rank": 0.5
+      "rank": 3,
+      "reciprocal_rank": 0.3333333333333333
     },
     {
       "question": "Can I return a product without a receipt?",
       "original_answer_id": 32,
       "gold_answer_id": 32,
       "retrieved_ids": [
-        60,
-        32,
         39,
-        71,
+        60,
+        48,
+        51,
         25
       ],
-      "rank": 2,
-      "reciprocal_rank": 0.5
+      "rank": null,
+      "reciprocal_rank": 0.0
     },
     {
       "question": "Can I order a product for delivery to a different country?",
@@ -492,13 +497,13 @@
       "gold_answer_id": 33,
       "retrieved_ids": [
         27,
-        6,
         33,
         47,
-        22
+        6,
+        70
       ],
-      "rank": 3,
-      "reciprocal_rank": 0.3333333333333333
+      "rank": 2,
+      "reciprocal_rank": 0.5
     },
     {
       "question": "Can I add a gift message to my order?",
@@ -506,10 +511,10 @@
       "gold_answer_id": 34,
       "retrieved_ids": [
         34,
-        27,
         10,
+        27,
         41,
-        79
+        73
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -522,8 +527,8 @@
         35,
         53,
         64,
-        47,
-        25
+        75,
+        47
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -534,13 +539,13 @@
       "gold_answer_id": 36,
       "retrieved_ids": [
         53,
-        36,
         58,
-        47,
-        41
+        36,
+        70,
+        44
       ],
-      "rank": 2,
-      "reciprocal_rank": 0.5
+      "rank": 3,
+      "reciprocal_rank": 0.3333333333333333
     },
     {
       "question": "Can I request an invoice for my order?",
@@ -548,9 +553,9 @@
       "gold_answer_id": 37,
       "retrieved_ids": [
         37,
-        12,
-        41,
         79,
+        41,
+        12,
         53
       ],
       "rank": 1,
@@ -563,9 +568,9 @@
       "retrieved_ids": [
         38,
         61,
-        72,
-        41,
-        53
+        44,
+        70,
+        65
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -577,8 +582,8 @@
       "retrieved_ids": [
         39,
         25,
-        48,
         3,
+        48,
         51
       ],
       "rank": 1,
@@ -589,14 +594,14 @@
       "original_answer_id": 40,
       "gold_answer_id": 40,
       "retrieved_ids": [
-        69,
         40,
+        69,
         65,
-        56,
-        44
+        44,
+        74
       ],
-      "rank": 2,
-      "reciprocal_rank": 0.5
+      "rank": 1,
+      "reciprocal_rank": 1.0
     },
     {
       "question": "Can I order a product that is listed as 'pre-order' with other in-stock items?",
@@ -604,9 +609,9 @@
       "gold_answer_id": 41,
       "retrieved_ids": [
         41,
-        53,
-        72,
         70,
+        72,
+        53,
         47
       ],
       "rank": 1,
@@ -617,25 +622,25 @@
       "original_answer_id": 42,
       "gold_answer_id": 42,
       "retrieved_ids": [
-        42,
         68,
-        25,
+        42,
         57,
-        39
+        25,
+        45
       ],
-      "rank": 1,
-      "reciprocal_rank": 1.0
+      "rank": 2,
+      "reciprocal_rank": 0.5
     },
     {
       "question": "Can I request a product that is out of stock to be restocked?",
       "original_answer_id": 43,
       "gold_answer_id": 43,
       "retrieved_ids": [
-        56,
         44,
+        56,
         65,
-        74,
-        69
+        69,
+        40
       ],
       "rank": null,
       "reciprocal_rank": 0.0
@@ -646,10 +651,10 @@
       "gold_answer_id": 44,
       "retrieved_ids": [
         44,
-        65,
         70,
+        65,
         72,
-        59
+        53
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -662,8 +667,8 @@
         45,
         54,
         75,
-        71,
-        48
+        48,
+        71
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -677,7 +682,7 @@
         68,
         42,
         57,
-        84
+        25
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -689,9 +694,9 @@
       "retrieved_ids": [
         72,
         65,
-        53,
         70,
-        44
+        44,
+        53
       ],
       "rank": null,
       "reciprocal_rank": 0.0
@@ -704,7 +709,7 @@
         48,
         51,
         73,
-        25,
+        71,
         45
       ],
       "rank": 1,
@@ -717,9 +722,9 @@
       "retrieved_ids": [
         49,
         62,
-        31,
-        64,
-        50
+        44,
+        50,
+        56
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -729,14 +734,14 @@
       "original_answer_id": 50,
       "gold_answer_id": 50,
       "retrieved_ids": [
-        50,
         72,
-        44,
         65,
-        38
+        44,
+        50,
+        61
       ],
-      "rank": 1,
-      "reciprocal_rank": 1.0
+      "rank": 4,
+      "reciprocal_rank": 0.25
     },
     {
       "question": "Can I return a product if it was purchased with a gift card?",
@@ -744,10 +749,10 @@
       "gold_answer_id": 51,
       "retrieved_ids": [
         51,
-        48,
         73,
+        48,
         71,
-        45
+        54
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -759,9 +764,9 @@
       "retrieved_ids": [
         52,
         64,
-        38,
         74,
-        50
+        50,
+        49
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -773,7 +778,7 @@
       "retrieved_ids": [
         53,
         58,
-        47,
+        36,
         72,
         70
       ],
@@ -789,7 +794,7 @@
         45,
         75,
         71,
-        48
+        73
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -800,10 +805,10 @@
       "gold_answer_id": 55,
       "retrieved_ids": [
         55,
-        34,
-        38,
         27,
-        79
+        47,
+        53,
+        41
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -813,11 +818,11 @@
       "original_answer_id": 56,
       "gold_answer_id": 56,
       "retrieved_ids": [
-        59,
-        56,
         44,
-        64,
-        50
+        56,
+        59,
+        65,
+        72
       ],
       "rank": 2,
       "reciprocal_rank": 0.5
@@ -828,10 +833,10 @@
       "gold_answer_id": 57,
       "retrieved_ids": [
         57,
-        25,
         68,
-        39,
-        42
+        25,
+        42,
+        39
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -842,10 +847,10 @@
       "gold_answer_id": 58,
       "retrieved_ids": [
         58,
-        36,
         53,
+        36,
         72,
-        38
+        70
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -857,9 +862,9 @@
       "retrieved_ids": [
         59,
         44,
+        72,
         65,
-        70,
-        56
+        70
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -869,14 +874,14 @@
       "original_answer_id": 60,
       "gold_answer_id": 60,
       "retrieved_ids": [
-        60,
-        32,
-        45,
+        39,
         25,
+        48,
+        51,
         71
       ],
-      "rank": 1,
-      "reciprocal_rank": 1.0
+      "rank": null,
+      "reciprocal_rank": 0.0
     },
     {
       "question": "Can I request a product that is listed as 'limited edition' to be restocked?",
@@ -884,10 +889,10 @@
       "gold_answer_id": 61,
       "retrieved_ids": [
         61,
-        38,
         44,
         56,
-        50
+        38,
+        72
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -899,9 +904,9 @@
       "retrieved_ids": [
         62,
         49,
-        31,
-        64,
-        44
+        44,
+        65,
+        31
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -912,10 +917,10 @@
       "gold_answer_id": 63,
       "retrieved_ids": [
         63,
-        45,
         29,
-        54,
-        75
+        45,
+        25,
+        48
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -926,10 +931,10 @@
       "gold_answer_id": 64,
       "retrieved_ids": [
         64,
-        55,
         49,
-        36,
-        69
+        62,
+        59,
+        50
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -955,9 +960,9 @@
       "retrieved_ids": [
         66,
         48,
-        45,
-        25,
-        51
+        51,
+        73,
+        45
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -967,10 +972,10 @@
       "original_answer_id": 67,
       "gold_answer_id": 67,
       "retrieved_ids": [
-        56,
         44,
+        56,
         65,
-        50,
+        69,
         74
       ],
       "rank": null,
@@ -982,10 +987,10 @@
       "gold_answer_id": 53,
       "retrieved_ids": [
         53,
-        47,
-        72,
         58,
-        70
+        36,
+        70,
+        72
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -997,9 +1002,9 @@
       "retrieved_ids": [
         68,
         42,
+        57,
         25,
-        39,
-        57
+        45
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1010,13 +1015,13 @@
       "gold_answer_id": 69,
       "retrieved_ids": [
         65,
-        56,
         69,
         44,
+        56,
         40
       ],
-      "rank": 3,
-      "reciprocal_rank": 0.3333333333333333
+      "rank": 2,
+      "reciprocal_rank": 0.5
     },
     {
       "question": "Can I order a product if it is listed as 'pre-order' but available for backorder?",
@@ -1024,10 +1029,10 @@
       "gold_answer_id": 70,
       "retrieved_ids": [
         70,
+        72,
         65,
         53,
-        44,
-        72
+        44
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1039,9 +1044,9 @@
       "retrieved_ids": [
         71,
         51,
-        45,
         73,
-        54
+        54,
+        45
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1051,11 +1056,11 @@
       "original_answer_id": 43,
       "gold_answer_id": 43,
       "retrieved_ids": [
-        56,
         44,
-        74,
+        56,
         65,
-        50
+        52,
+        69
       ],
       "rank": null,
       "reciprocal_rank": 0.0
@@ -1066,10 +1071,10 @@
       "gold_answer_id": 72,
       "retrieved_ids": [
         72,
-        50,
-        53,
         70,
-        47
+        53,
+        58,
+        65
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1083,7 +1088,7 @@
         51,
         75,
         48,
-        45
+        54
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1095,9 +1100,9 @@
       "retrieved_ids": [
         74,
         64,
-        36,
-        38,
-        52
+        52,
+        50,
+        49
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1107,14 +1112,14 @@
       "original_answer_id": 58,
       "gold_answer_id": 58,
       "retrieved_ids": [
-        53,
         58,
+        53,
         36,
         72,
         70
       ],
-      "rank": 2,
-      "reciprocal_rank": 0.5
+      "rank": 1,
+      "reciprocal_rank": 1.0
     },
     {
       "question": "Can I return a product if it was purchased during a promotional event?",
@@ -1137,9 +1142,9 @@
       "retrieved_ids": [
         76,
         77,
-        9,
-        46,
-        60
+        18,
+        13,
+        21
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1150,10 +1155,10 @@
       "gold_answer_id": 77,
       "retrieved_ids": [
         77,
-        76,
-        18,
+        80,
+        0,
         2,
-        79
+        13
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1165,8 +1170,8 @@
       "retrieved_ids": [
         78,
         13,
-        77,
-        2,
+        32,
+        66,
         11
       ],
       "rank": 1,
@@ -1178,10 +1183,10 @@
       "gold_answer_id": 79,
       "retrieved_ids": [
         79,
-        18,
+        4,
         41,
         8,
-        53
+        18
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1193,7 +1198,7 @@
       "retrieved_ids": [
         80,
         24,
-        18,
+        19,
         23,
         77
       ],
@@ -1207,9 +1212,9 @@
       "retrieved_ids": [
         81,
         26,
+        5,
         9,
-        12,
-        5
+        14
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1221,9 +1226,9 @@
       "retrieved_ids": [
         82,
         15,
-        11,
-        60,
-        32
+        69,
+        25,
+        60
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1235,9 +1240,9 @@
       "retrieved_ids": [
         83,
         20,
-        78,
+        9,
         0,
-        30
+        15
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1249,9 +1254,9 @@
       "retrieved_ids": [
         84,
         82,
-        3,
-        46,
-        66
+        25,
+        66,
+        57
       ],
       "rank": 1,
       "reciprocal_rank": 1.0
@@ -1263,12 +1268,12 @@
       "retrieved_ids": [
         45,
         54,
-        48,
+        85,
         75,
-        85
+        48
       ],
-      "rank": 5,
-      "reciprocal_rank": 0.2
+      "rank": 3,
+      "reciprocal_rank": 0.3333333333333333
     }
   ]
 }

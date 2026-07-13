@@ -1,0 +1,2581 @@
+{
+  "config": "chunk_concatenation (winning Phase 5 experiment)",
+  "aggregate": {
+    "n": 89,
+    "faithfulness": {
+      "mean": 4.764044943820225,
+      "n": 89,
+      "malformed_excluded": 0
+    },
+    "relevance": {
+      "mean": 4.235955056179775,
+      "n": 89,
+      "malformed_excluded": 0
+    },
+    "completeness": {
+      "mean": 4.325842696629214,
+      "n": 89,
+      "malformed_excluded": 0
+    },
+    "completeness_on_retrieval_hits": {
+      "mean": 4.329545454545454,
+      "n": 88,
+      "malformed_excluded": 0,
+      "n_hit_queries": 88
+    },
+    "hallucination": {
+      "rate": 0.25882352941176473,
+      "hallucinated_citations": 22,
+      "total_citations": 85,
+      "queries_with_hallucination": 19
+    }
+  },
+  "paraphrase_subset": {
+    "note": "Illustrative only, not statistically meaningful: 3 answer_ids each shared by 2 differently-worded questions (n=6 queries total).",
+    "answer_ids": [
+      43,
+      53,
+      58
+    ],
+    "metrics": {
+      "n": 6,
+      "faithfulness": {
+        "mean": 5.0,
+        "n": 6,
+        "malformed_excluded": 0
+      },
+      "relevance": {
+        "mean": 4.666666666666667,
+        "n": 6,
+        "malformed_excluded": 0
+      },
+      "completeness": {
+        "mean": 4.5,
+        "n": 6,
+        "malformed_excluded": 0
+      },
+      "completeness_on_retrieval_hits": {
+        "mean": 4.5,
+        "n": 6,
+        "malformed_excluded": 0,
+        "n_hit_queries": 6
+      },
+      "hallucination": {
+        "rate": 0.25,
+        "hallucinated_citations": 2,
+        "total_citations": 8,
+        "queries_with_hallucination": 2
+      }
+    }
+  },
+  "per_query": [
+    {
+      "question": "How can I create an account?",
+      "gold_answer_id": 0,
+      "retrieved_ids": [
+        0,
+        25,
+        16,
+        15,
+        22
+      ],
+      "cited_ids": [
+        0
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the context except for the claim that creating an account allows tracking of orders, which is not explicitly stated in the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes a minor generic statement about tracking orders and future purchases."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers all key information but adds a supplementary phrase about tracking orders and making future purchases easier."
+      }
+    },
+    {
+      "question": "What payment methods do you accept?",
+      "gold_answer_id": 1,
+      "retrieved_ids": [
+        26,
+        21,
+        19,
+        20,
+        12
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and directly answers the customer's question based on the provided context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about accepted payment methods."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer."
+      }
+    },
+    {
+      "question": "How can I track my order?",
+      "gold_answer_id": 2,
+      "retrieved_ids": [
+        25,
+        2,
+        3,
+        16,
+        17
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the retrieved context and only uses connective wording beyond the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about changing or canceling items that was not asked for."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific mention of 'Order History' section and includes additional non-essential content."
+      }
+    },
+    {
+      "question": "What is your return policy?",
+      "gold_answer_id": 3,
+      "retrieved_ids": [
+        6,
+        8,
+        9,
+        5,
+        4
+      ],
+      "cited_ids": [
+        6
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about the return policy."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits mentioning the full refund within the 30-day period."
+      }
+    },
+    {
+      "question": "Can I cancel my order?",
+      "gold_answer_id": 4,
+      "retrieved_ids": [
+        3,
+        6,
+        2,
+        8,
+        21
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts what is directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about canceling an order and provides relevant information on the process."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "How long does shipping take?",
+      "gold_answer_id": 5,
+      "retrieved_ids": [
+        28,
+        3,
+        16,
+        17,
+        2
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft accurately reflects the retrieved context without adding unsupported claims or overgeneralizations."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about contacting support and a sign-off."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific mention of destination and shipping method variability."
+      }
+    },
+    {
+      "question": "Do you offer international shipping?",
+      "gold_answer_id": 6,
+      "retrieved_ids": [
+        19,
+        20,
+        21,
+        3,
+        10
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts facts directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about international shipping and provides relevant information."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits mentioning that the availability and costs will be calculated during the checkout process."
+      }
+    },
+    {
+      "question": "What should I do if my package is lost or damaged?",
+      "gold_answer_id": 7,
+      "retrieved_ids": [
+        2,
+        1,
+        3,
+        5,
+        17
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about what to do if their package is lost or damaged."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes additional phrasing and elaboration."
+      }
+    },
+    {
+      "question": "Can I change my shipping address after placing an order?",
+      "gold_answer_id": 8,
+      "retrieved_ids": [
+        3,
+        2,
+        20,
+        19,
+        16
+      ],
+      "cited_ids": [
+        3
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the context and only slightly rephrases the provided information."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about changing a shipping address after placing an order."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the part about not being able to change an address once an order has been shipped."
+      }
+    },
+    {
+      "question": "How can I contact customer support?",
+      "gold_answer_id": 9,
+      "retrieved_ids": [
+        23,
+        2,
+        1,
+        3,
+        11
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts information directly supported by the context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses how to contact customer support without any extraneous content."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer."
+      }
+    },
+    {
+      "question": "Do you offer gift wrapping services?",
+      "gold_answer_id": 10,
+      "retrieved_ids": [
+        20,
+        7,
+        21,
+        22,
+        19
+      ],
+      "cited_ids": [
+        3
+      ],
+      "hallucinated_citations": [
+        3
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about gift wrapping services."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes supplementary phrasing about entering personalized messages."
+      }
+    },
+    {
+      "question": "What is your price matching policy?",
+      "gold_answer_id": 11,
+      "retrieved_ids": [
+        12,
+        11,
+        10,
+        4,
+        6
+      ],
+      "cited_ids": [
+        12
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about the price matching policy and provides clear instructions on how to proceed."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I order by phone?",
+      "gold_answer_id": 12,
+      "retrieved_ids": [
+        21,
+        20,
+        2,
+        25,
+        3
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the context and does not add any unsupported claims."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about contacting customer support."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the direct encouragement for placing an order through the website."
+      }
+    },
+    {
+      "question": "Are my personal and payment details secure?",
+      "gold_answer_id": 13,
+      "retrieved_ids": [
+        26,
+        21,
+        16,
+        20,
+        19
+      ],
+      "cited_ids": [
+        26
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's concern about security and provides relevant information."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the reference to specific security protocols mentioned in the original."
+      }
+    },
+    {
+      "question": "What is your price adjustment policy?",
+      "gold_answer_id": 14,
+      "retrieved_ids": [
+        11,
+        12,
+        10,
+        6,
+        4
+      ],
+      "cited_ids": [
+        1,
+        2
+      ],
+      "hallucinated_citations": [
+        1,
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about the price adjustment policy without adding unnecessary information."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes an additional scenario that is not in the reference answer."
+      }
+    },
+    {
+      "question": "Do you have a loyalty program?",
+      "gold_answer_id": 15,
+      "retrieved_ids": [
+        10,
+        7,
+        6,
+        24,
+        25
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes extra information about how to join and what benefits are available."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I order without creating an account?",
+      "gold_answer_id": 16,
+      "retrieved_ids": [
+        25,
+        21,
+        16,
+        17,
+        20
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the context, with only slight rephrasing of existing information."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about ordering without creating an account."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer, including the ability to order as a guest and the benefits of creating an account."
+      }
+    },
+    {
+      "question": "Do you offer bulk or wholesale discounts?",
+      "gold_answer_id": 17,
+      "retrieved_ids": [
+        10,
+        12,
+        11,
+        6,
+        17
+      ],
+      "cited_ids": [
+        10
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts what is directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about contacting customer support or visiting a page."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the exact number of products eligible for bulk or wholesale discounts."
+      }
+    },
+    {
+      "question": "Can I change or cancel an item in my order?",
+      "gold_answer_id": 18,
+      "retrieved_ids": [
+        3,
+        2,
+        6,
+        4,
+        14
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the context and does not add any unsupported claims."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes generic framing about contacting support and return policies."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer, including contacting customer support and assisting with necessary steps."
+      }
+    },
+    {
+      "question": "How can I leave a product review?",
+      "gold_answer_id": 19,
+      "retrieved_ids": [
+        27,
+        6,
+        5,
+        4,
+        8
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic closing remarks that are not directly related."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I use multiple promo codes on a single order?",
+      "gold_answer_id": 20,
+      "retrieved_ids": [
+        10,
+        11,
+        7,
+        6,
+        16
+      ],
+      "cited_ids": [
+        11
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and accurately reflects the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content and a generic closing."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the reference number [11] which is a supplementary detail."
+      }
+    },
+    {
+      "question": "What should I do if I receive the wrong item?",
+      "gold_answer_id": 21,
+      "retrieved_ids": [
+        3,
+        2,
+        1,
+        5,
+        4
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims beyond what is provided in the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes slightly generic framing and extraneous content about 'context'."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes redundant phrasing."
+      }
+    },
+    {
+      "question": "Do you offer expedited shipping?",
+      "gold_answer_id": 22,
+      "retrieved_ids": [
+        19,
+        20,
+        2,
+        28,
+        16
+      ],
+      "cited_ids": [
+        19
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about expedited shipping options."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I order a product that is out of stock?",
+      "gold_answer_id": 23,
+      "retrieved_ids": [
+        17,
+        14,
+        18,
+        16,
+        25
+      ],
+      "cited_ids": [
+        17,
+        25
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": false,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the retrieved context and only uses connective wording beyond the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about reservations and notifications that were not specifically asked for."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers most key information but omits mentioning backorder availability and includes unnecessary policy references."
+      }
+    },
+    {
+      "question": "What is your email newsletter about?",
+      "gold_answer_id": 24,
+      "retrieved_ids": [
+        27,
+        14,
+        24,
+        23,
+        15
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any substantive factual claims beyond politely declining to answer, which is vacuously faithful."
+      },
+      "relevance": {
+        "score": 1,
+        "rationale": "The draft does not address the customer's question about what the email newsletter is about."
+      },
+      "completeness": {
+        "score": 1,
+        "rationale": "The draft omits all key information from the reference answer entirely."
+      }
+    },
+    {
+      "question": "Can I return a product if I changed my mind?",
+      "gold_answer_id": 25,
+      "retrieved_ids": [
+        6,
+        8,
+        7,
+        4,
+        5
+      ],
+      "cited_ids": [
+        6
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question and provides relevant information."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes supplementary phrasing that is not strictly necessary."
+      }
+    },
+    {
+      "question": "Do you offer live chat support?",
+      "gold_answer_id": 26,
+      "retrieved_ids": [
+        23,
+        22,
+        1,
+        2,
+        11
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts information directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about live chat support."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I order a product as a gift?",
+      "gold_answer_id": 27,
+      "retrieved_ids": [
+        20,
+        8,
+        21,
+        16,
+        7
+      ],
+      "cited_ids": [
+        20
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about returns and gift wrapping that was not specifically asked for."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information about ordering a gift and shipping it directly. However, it omits mentioning that a personalized message can be added during checkout."
+      }
+    },
+    {
+      "question": "What should I do if my discount code is not working?",
+      "gold_answer_id": 28,
+      "retrieved_ids": [
+        11,
+        6,
+        12,
+        10,
+        7
+      ],
+      "cited_ids": [
+        11
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes a reference to an unspecified policy and uses generic language."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was a final sale item?",
+      "gold_answer_id": 29,
+      "retrieved_ids": [
+        4,
+        6,
+        8,
+        7,
+        5
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and aligns with the provided context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content and a slightly generic closing."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes additional phrasing and elaboration about making exceptions, which is not in the reference answer."
+      }
+    },
+    {
+      "question": "Do you offer installation services for your products?",
+      "gold_answer_id": 30,
+      "retrieved_ids": [
+        22,
+        20,
+        21,
+        16,
+        25
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts information directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about contacting them during business hours."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but omits the direct request for customers to contact support to request installation services."
+      }
+    },
+    {
+      "question": "Can I order a product that is discontinued?",
+      "gold_answer_id": 31,
+      "retrieved_ids": [
+        13,
+        12,
+        17,
+        14,
+        24
+      ],
+      "cited_ids": [
+        13
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic closing remarks."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer, including the policy on discontinued products and the recommendation for alternative options."
+      }
+    },
+    {
+      "question": "Can I return a product without a receipt?",
+      "gold_answer_id": 32,
+      "retrieved_ids": [
+        5,
+        6,
+        8,
+        7,
+        4
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and aligns with the provided context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about product condition that was not part of the original query."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers most key information but omits mentioning that a receipt is usually required for returns and directly referring to the customer support team for assistance."
+      }
+    },
+    {
+      "question": "Can I order a product for delivery to a different country?",
+      "gold_answer_id": 33,
+      "retrieved_ids": [
+        19,
+        16,
+        20,
+        3,
+        17
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and only restates information provided in the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic framing and additional information not directly requested by the customer."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I add a gift message to my order?",
+      "gold_answer_id": 34,
+      "retrieved_ids": [
+        20,
+        2,
+        25,
+        21,
+        3
+      ],
+      "cited_ids": [
+        20
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts what is directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about following steps which were not part of the customer's query."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I request a product demonstration before making a purchase?",
+      "gold_answer_id": 35,
+      "retrieved_ids": [
+        22,
+        16,
+        15,
+        5,
+        6
+      ],
+      "cited_ids": [
+        16,
+        22
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only makes claims directly supported by the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about contacting the team and business hours."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific mention of product demonstrations being available on the website."
+      }
+    },
+    {
+      "question": "Can I order a product that is listed as 'coming soon'?",
+      "gold_answer_id": 36,
+      "retrieved_ids": [
+        15,
+        16,
+        17,
+        14,
+        18
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous information about pre-ordering that was not part of the original query."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes unnecessary details about pre-ordering that are not in the reference answer."
+      }
+    },
+    {
+      "question": "Can I request an invoice for my order?",
+      "gold_answer_id": 37,
+      "retrieved_ids": [
+        21,
+        25,
+        20,
+        16,
+        5
+      ],
+      "cited_ids": [
+        21
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and only restates information from the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional generic information and a closing statement that is not necessary."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I order a product that is labeled as 'limited edition'?",
+      "gold_answer_id": 38,
+      "retrieved_ids": [
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "cited_ids": [
+        18
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and only restates information directly supported by the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about product restocking and availability."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if I no longer have the original packaging?",
+      "gold_answer_id": 39,
+      "retrieved_ids": [
+        5,
+        6,
+        8,
+        7,
+        1
+      ],
+      "cited_ids": [
+        5
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft accurately reflects the retrieved context without adding unsupported claims."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about receipts that was not part of the original query."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits mentioning that a receipt or proof of purchase is usually required for returns."
+      }
+    },
+    {
+      "question": "Can I request a product that is currently out of stock to be reserved for me?",
+      "gold_answer_id": 40,
+      "retrieved_ids": [
+        14,
+        17,
+        24,
+        15,
+        25
+      ],
+      "cited_ids": [
+        25
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the context, with only slight rephrasing of the information provided."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about product notifications that was not specifically requested."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer, including the policy on reservations and the option for product notifications."
+      }
+    },
+    {
+      "question": "Can I order a product that is listed as 'pre-order' with other in-stock items?",
+      "gold_answer_id": 41,
+      "retrieved_ids": [
+        16,
+        17,
+        18,
+        15,
+        25
+      ],
+      "cited_ids": [
+        25
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any substantive factual claims beyond what is supported by the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content and generic framing."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was damaged during shipping?",
+      "gold_answer_id": 42,
+      "retrieved_ids": [
+        1,
+        6,
+        8,
+        9,
+        5
+      ],
+      "cited_ids": [
+        1,
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic framing and additional information about guidelines."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer, including immediate contact and guidance through the process."
+      }
+    },
+    {
+      "question": "Can I request a product that is out of stock to be restocked?",
+      "gold_answer_id": 43,
+      "retrieved_ids": [
+        14,
+        24,
+        17,
+        18,
+        13
+      ],
+      "cited_ids": [
+        14,
+        24
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and only rephrases the provided context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about product notifications and temporarily unavailable items."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes additional elaboration and a disclaimer about temporarily unavailable products that is not in the reference answer."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'backordered'?",
+      "gold_answer_id": 44,
+      "retrieved_ids": [
+        17,
+        16,
+        15,
+        14,
+        12
+      ],
+      "cited_ids": [
+        17
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about ordering a backordered product."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased during a sale or with a discount?",
+      "gold_answer_id": 45,
+      "retrieved_ids": [
+        6,
+        7,
+        8,
+        4,
+        5
+      ],
+      "cited_ids": [
+        6
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about initiating a return and provides additional context not directly asked for."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes unnecessary elaboration and references an unspecified policy ID."
+      }
+    },
+    {
+      "question": "Can I request a product repair or replacement if it is damaged?",
+      "gold_answer_id": 46,
+      "retrieved_ids": [
+        1,
+        9,
+        2,
+        5,
+        22
+      ],
+      "cited_ids": [
+        1,
+        9
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the context and accurately reflects the policies mentioned."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about return policies and proper use."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes additional context about damage eligibility that is not in the reference answer."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'out of stock' but available for pre-order?",
+      "gold_answer_id": 47,
+      "retrieved_ids": [
+        17,
+        16,
+        18,
+        15,
+        14
+      ],
+      "cited_ids": [
+        15,
+        17
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft accurately reflects the context and does not add unsupported information. The mention of 'temporarily unavailable' in [15] is slightly rephrased but still supported."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous information about order shipping."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes unnecessary policy reference and additional details not present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased as a gift?",
+      "gold_answer_id": 48,
+      "retrieved_ids": [
+        8,
+        7,
+        6,
+        4,
+        5
+      ],
+      "cited_ids": [
+        8
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about returning a gift-purchased product."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes additional phrasing and elaboration not present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I request a product if it is listed as 'discontinued'?",
+      "gold_answer_id": 49,
+      "retrieved_ids": [
+        13,
+        12,
+        14,
+        15,
+        17
+      ],
+      "cited_ids": [
+        13
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 2,
+        "rationale": "The response does not directly address whether a request can be made for discontinued products, instead providing general information and suggesting alternatives."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the part about recommending specific actions or alternatives."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'sold out'?",
+      "gold_answer_id": 50,
+      "retrieved_ids": [
+        17,
+        13,
+        18,
+        14,
+        12
+      ],
+      "cited_ids": [
+        5
+      ],
+      "hallucinated_citations": [
+        5
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about checking back and signing up for notifications."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased with a gift card?",
+      "gold_answer_id": 51,
+      "retrieved_ids": [
+        7,
+        8,
+        6,
+        5,
+        4
+      ],
+      "cited_ids": [
+        3
+      ],
+      "hallucinated_citations": [
+        3
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about the form of refund and return conditions."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific mention of the refund method (store credit or new gift card) being in line with the return policy."
+      }
+    },
+    {
+      "question": "Can I request a product if it is not currently available in my size?",
+      "gold_answer_id": 52,
+      "retrieved_ids": [
+        14,
+        12,
+        13,
+        15,
+        17
+      ],
+      "cited_ids": [
+        3
+      ],
+      "hallucinated_citations": [
+        3
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic framing and extraneous content about checking back later."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'coming soon' but available for pre-order?",
+      "gold_answer_id": 53,
+      "retrieved_ids": [
+        16,
+        15,
+        17,
+        18,
+        14
+      ],
+      "cited_ids": [
+        16
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about ordering a 'coming soon' pre-order item."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased with a discount code?",
+      "gold_answer_id": 54,
+      "retrieved_ids": [
+        6,
+        7,
+        8,
+        4,
+        11
+      ],
+      "cited_ids": [
+        6,
+        7
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about returning a product with a discount code and provides relevant information."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific reference numbers for the return policy and discount returns."
+      }
+    },
+    {
+      "question": "Can I request a custom order or personalized product?",
+      "gold_answer_id": 55,
+      "retrieved_ids": [
+        21,
+        20,
+        25,
+        16,
+        2
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft accurately reflects the context by stating that custom orders or personalized products are not offered and directs customers to explore available products."
+      },
+      "relevance": {
+        "score": 2,
+        "rationale": "The draft does not address whether a custom order can be requested, instead it informs the customer that such services are not available."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the direct encouragement to explore available products without mentioning it in a separate sentence."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'temporarily unavailable'?",
+      "gold_answer_id": 56,
+      "retrieved_ids": [
+        14,
+        17,
+        15,
+        16,
+        13
+      ],
+      "cited_ids": [
+        14
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic advice and a closing statement that is not directly related to the customer's query."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was damaged due to improper use?",
+      "gold_answer_id": 57,
+      "retrieved_ids": [
+        1,
+        9,
+        6,
+        5,
+        8
+      ],
+      "cited_ids": [
+        9
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft accurately reflects the context and does not add unsupported claims."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about exploring solutions and a general return policy."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft nearly covers all key information but omits the specific mention of damage due to improper use not being eligible for return."
+      }
+    },
+    {
+      "question": "Can I request a product if it is listed as 'coming soon' but not available for pre-order?",
+      "gold_answer_id": 58,
+      "retrieved_ids": [
+        15,
+        16,
+        17,
+        14,
+        18
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question and provides clear information according to company policies."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer, including the need to wait for official release and the option to sign up for notifications."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'on hold'?",
+      "gold_answer_id": 59,
+      "retrieved_ids": [
+        15,
+        17,
+        16,
+        14,
+        25
+      ],
+      "cited_ids": [
+        15
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only states information directly supported by the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about signing up for notifications."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if I no longer have the original receipt?",
+      "gold_answer_id": 60,
+      "retrieved_ids": [
+        5,
+        6,
+        8,
+        7,
+        4
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any substantive factual claims beyond what the context supports."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well, but includes some generic framing about contacting customer support."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information; only the supplementary phrasing 'Thank you for reaching out about returning a product without the original receipt' and 'You can reach out to us directly for more information on how to proceed with your return' is omitted."
+      }
+    },
+    {
+      "question": "Can I request a product that is listed as 'limited edition' to be restocked?",
+      "gold_answer_id": 61,
+      "retrieved_ids": [
+        18,
+        14,
+        17,
+        24,
+        15
+      ],
+      "cited_ids": [
+        18,
+        24
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims beyond what is stated in the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about future notifications that was not specifically requested."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers most key information but omits the specific timeframe for limited edition items being available only for a limited time."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'discontinued' but still visible on the website?",
+      "gold_answer_id": 62,
+      "retrieved_ids": [
+        13,
+        12,
+        17,
+        14,
+        15
+      ],
+      "cited_ids": [
+        13
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 3,
+        "rationale": "Partially addresses the question by mentioning that discontinued products are not available but does not clearly state this in response to the specific query."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "Omits the direct recommendation to contact customer support for clarification when a product is listed as 'discontinued'."
+      }
+    },
+    {
+      "question": "Can I return a product if it was a clearance or final sale item?",
+      "gold_answer_id": 63,
+      "retrieved_ids": [
+        4,
+        6,
+        8,
+        5,
+        7
+      ],
+      "cited_ids": [
+        3
+      ],
+      "hallucinated_citations": [
+        3
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and accurately reflects the retrieved context regarding clearance or final sale items."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about returning clearance or final sale items."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but omits the suggestion to review the product description."
+      }
+    },
+    {
+      "question": "Can I request a product if it is not listed on your website?",
+      "gold_answer_id": 64,
+      "retrieved_ids": [
+        12,
+        15,
+        13,
+        14,
+        17
+      ],
+      "cited_ids": [
+        12
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft accurately reflects the context regarding product availability and price matching policy without adding unsupported claims."
+      },
+      "relevance": {
+        "score": 3,
+        "rationale": "Partially addresses the question by mentioning unlisted products but includes unrelated information about price matching and generic closing remarks."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the mention of price matching policy for non-listed products."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'out of stock' but available for backorder?",
+      "gold_answer_id": 65,
+      "retrieved_ids": [
+        17,
+        16,
+        14,
+        18,
+        15
+      ],
+      "cited_ids": [
+        2,
+        7
+      ],
+      "hallucinated_citations": [
+        2,
+        7
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft is fully supported by the retrieved context and only uses connective wording beyond the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about pre-order and in-stock items that was not asked for."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers most of the key information but includes an additional detail about pre-order and in-stock items that isn't present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased as part of a bundle or set?",
+      "gold_answer_id": 66,
+      "retrieved_ids": [
+        4,
+        6,
+        8,
+        7,
+        5
+      ],
+      "cited_ids": [
+        4
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic framing and a recommendation to review terms and conditions."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes unnecessary details about the general return policy that are not relevant to the specific case of bundle or set purchases."
+      }
+    },
+    {
+      "question": "Can I request a product that is listed as 'out of stock' to be restocked?",
+      "gold_answer_id": 67,
+      "retrieved_ids": [
+        14,
+        17,
+        24,
+        13,
+        18
+      ],
+      "cited_ids": [
+        14,
+        24
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about temporarily unavailable products and notifications."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes additional elaboration and a disclaimer about temporarily unavailable products that is not in the reference answer."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'coming soon' and available for pre-order?",
+      "gold_answer_id": 53,
+      "retrieved_ids": [
+        16,
+        15,
+        17,
+        18,
+        14
+      ],
+      "cited_ids": [
+        16
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about ordering a 'coming soon' product."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the direct instruction to place an order as stated in the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was damaged due to mishandling during shipping?",
+      "gold_answer_id": 68,
+      "retrieved_ids": [
+        1,
+        6,
+        9,
+        5,
+        8
+      ],
+      "cited_ids": [
+        2,
+        5,
+        9
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 4,
+        "rationale": "The draft accurately reflects the context and does not add unsupported claims."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well, but includes some generic information about returns that was not specifically asked for."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes additional details not present in the reference answer."
+      }
+    },
+    {
+      "question": "Can I request a product that is listed as 'out of stock' to be reserved for me?",
+      "gold_answer_id": 69,
+      "retrieved_ids": [
+        17,
+        14,
+        15,
+        24,
+        18
+      ],
+      "cited_ids": [
+        17,
+        24
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about backorders and notifications that were not part of the original query."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer, including the policy on out-of-stock products and the option for product notifications."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'pre-order' but available for backorder?",
+      "gold_answer_id": 70,
+      "retrieved_ids": [
+        16,
+        17,
+        15,
+        18,
+        14
+      ],
+      "cited_ids": [
+        2,
+        7
+      ],
+      "hallucinated_citations": [
+        2,
+        7
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and only rephrases the provided context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous information about mixed orders and recommendations."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes additional elaboration and a recommendation that are not strictly necessary for completeness."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased with store credit?",
+      "gold_answer_id": 71,
+      "retrieved_ids": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts what is directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes a minor detail about refund form that was not asked."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits mentioning that the refund is in the form of store credit."
+      }
+    },
+    {
+      "question": "Can I request a product that is currently out of stock to be restocked?",
+      "gold_answer_id": 43,
+      "retrieved_ids": [
+        14,
+        24,
+        17,
+        18,
+        13
+      ],
+      "cited_ids": [
+        14,
+        24
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and only rephrases the provided context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes additional information about product availability and notifications."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes additional context and a recommendation that is not strictly necessary for the core message."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'sold out' but available for pre-order?",
+      "gold_answer_id": 72,
+      "retrieved_ids": [
+        17,
+        16,
+        18,
+        15,
+        13
+      ],
+      "cited_ids": [
+        17
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about ordering a 'sold out' product that is available for pre-order."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased with a promotional gift card?",
+      "gold_answer_id": 73,
+      "retrieved_ids": [
+        7,
+        8,
+        6,
+        4,
+        5
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's specific question about returning a product purchased with a promotional gift card."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific mention of store credit or a new gift card as the form of refund."
+      }
+    },
+    {
+      "question": "Can I request a product if it is not currently available in my preferred color?",
+      "gold_answer_id": 74,
+      "retrieved_ids": [
+        14,
+        12,
+        15,
+        13,
+        17
+      ],
+      "cited_ids": [
+        1
+      ],
+      "hallucinated_citations": [
+        1
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and aligns with the provided context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about product availability and notifications."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the direct recommendation to check back later or sign up for color notifications."
+      }
+    },
+    {
+      "question": "Can I order a product if it is listed as 'coming soon' and not available for pre-order?",
+      "gold_answer_id": 58,
+      "retrieved_ids": [
+        15,
+        16,
+        17,
+        18,
+        14
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [
+        2
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses whether a customer can order a 'coming soon' product and provides the correct information."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer, including the need to wait until official release and the option for notifications."
+      }
+    },
+    {
+      "question": "Can I return a product if it was purchased during a promotional event?",
+      "gold_answer_id": 75,
+      "retrieved_ids": [
+        7,
+        6,
+        8,
+        4,
+        5
+      ],
+      "cited_ids": [
+        7
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's specific question about returning a product purchased during a promotional event."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific timeframe mentioned in the reference answer."
+      }
+    },
+    {
+      "question": "How can I reset my password?",
+      "gold_answer_id": 76,
+      "retrieved_ids": [
+        0,
+        1,
+        23,
+        2,
+        3
+      ],
+      "cited_ids": [
+        2
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims supported by context [2]."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses how to reset the password as requested by the customer."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "How do I update my account information?",
+      "gold_answer_id": 77,
+      "retrieved_ids": [
+        0,
+        3,
+        2,
+        25,
+        23
+      ],
+      "cited_ids": [
+        1,
+        23
+      ],
+      "hallucinated_citations": [
+        1
+      ],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "The draft addresses the question well but includes a minor reference to not having specific information, which is extraneous."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes supplementary phrasing and elaboration that is not strictly necessary."
+      }
+    },
+    {
+      "question": "What is your privacy policy?",
+      "gold_answer_id": 78,
+      "retrieved_ids": [
+        26,
+        27,
+        0,
+        9,
+        5
+      ],
+      "cited_ids": [
+        26
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts what is directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about the privacy policy and provides a clear next step."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I change my order after it has been placed?",
+      "gold_answer_id": 79,
+      "retrieved_ids": [
+        3,
+        2,
+        16,
+        17,
+        25
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 1,
+        "rationale": "The draft contradicts the context by stating that order changes are not allowed after placement, when the context supports changes before shipping."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic information about unshipped orders that was not specifically asked for."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes unnecessary details about processed orders that are not in the reference answer."
+      }
+    },
+    {
+      "question": "How do I unsubscribe from your newsletter?",
+      "gold_answer_id": 80,
+      "retrieved_ids": [
+        27,
+        24,
+        14,
+        7,
+        3
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly and fully addresses the customer's specific question about how to unsubscribe from the newsletter."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but includes redundant phrasing."
+      }
+    },
+    {
+      "question": "What are your business hours?",
+      "gold_answer_id": 81,
+      "retrieved_ids": [
+        22,
+        28,
+        23,
+        21,
+        15
+      ],
+      "cited_ids": [
+        23
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts information directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes extraneous content about customer support team availability and a generic closing remark."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the specific business hours mentioned in the reference answer."
+      }
+    },
+    {
+      "question": "Do you offer a satisfaction guarantee?",
+      "gold_answer_id": 82,
+      "retrieved_ids": [
+        9,
+        22,
+        5,
+        6,
+        12
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any unsupported claims and only restates information provided in the context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some generic framing and additional information."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits mentioning where to find the details of the satisfaction guarantee."
+      }
+    },
+    {
+      "question": "How can I apply for a job at your company?",
+      "gold_answer_id": 83,
+      "retrieved_ids": [
+        28,
+        10,
+        12,
+        16,
+        22
+      ],
+      "cited_ids": [
+        28
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts a claim directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes a minor reference to 'context' which is not part of the customer's query."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers nearly all key information but omits the direct reference to visiting the Careers page as instructed in the reference answer."
+      }
+    },
+    {
+      "question": "What is the warranty on your products?",
+      "gold_answer_id": 84,
+      "retrieved_ids": [
+        9,
+        1,
+        8,
+        4,
+        6
+      ],
+      "cited_ids": [],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft does not make any substantive factual claims that go beyond the retrieved context."
+      },
+      "relevance": {
+        "score": 4,
+        "rationale": "Addresses the question well but includes some extraneous content about further assistance and a closing remark."
+      },
+      "completeness": {
+        "score": 5,
+        "rationale": "The draft covers all key information from the reference answer."
+      }
+    },
+    {
+      "question": "Can I request a refund if the price drops after my purchase?",
+      "gold_answer_id": 85,
+      "retrieved_ids": [
+        6,
+        11,
+        8,
+        7,
+        4
+      ],
+      "cited_ids": [
+        8
+      ],
+      "hallucinated_citations": [],
+      "retrieval_hit": true,
+      "faithfulness": {
+        "score": 5,
+        "rationale": "The draft only asserts claims directly supported by the retrieved context."
+      },
+      "relevance": {
+        "score": 5,
+        "rationale": "The draft directly addresses the customer's question about requesting a refund if the price drops after purchase."
+      },
+      "completeness": {
+        "score": 4,
+        "rationale": "The draft covers the key information but includes additional phrasing that is not strictly necessary."
+      }
+    }
+  ]
+}

@@ -49,11 +49,24 @@ n=6 is nowhere near large enough to draw a real conclusion, it's just a
 direct look at whether retrieval is robust to paraphrasing on the few cases
 where the dataset happens to test that.
 
+score_retrieved_ids() and run_experiment() below are the reusable half of
+this module: Phase 5's experiment scripts (src/eval/experiment_*.py) each
+swap in their own retrieve_ids_fn (querying a different collection, or a
+hybrid/reranked candidate list) and get identical scoring for free, so every
+experiment is measured with the exact same formulas as this baseline rather
+than a reimplementation that could quietly drift. Experiments that change KB
+granularity (e.g. chunk concatenation) also supply a gold_id_fn to remap each
+query's gold *answer_id* to whatever unit it now lives in (a chunk_id) —
+original_answer_id is kept on every record regardless, since that's what
+find_paraphrase_answer_ids() needs to identify the paraphrase subset,
+independent of whatever granularity a given experiment retrieves at.
+
 Run: python -m src.eval.retrieval_eval
 """
 import json
 from collections import defaultdict
 from pathlib import Path
+from typing import Callable
 
 from src.retrieve import get_client, retrieve
 
@@ -63,16 +76,47 @@ TOP_K = 5
 RECALL_KS = (1, 3, 5)
 
 
-def evaluate_query(question: str, gold_answer_id: int, k: int = TOP_K) -> dict:
-    chunks = retrieve(question, top_k=k)
-    retrieved_ids = [c.answer_id for c in chunks]
-    rank = retrieved_ids.index(gold_answer_id) + 1 if gold_answer_id in retrieved_ids else None
+def score_retrieved_ids(gold_id: int, retrieved_ids: list[int]) -> dict:
+    rank = retrieved_ids.index(gold_id) + 1 if gold_id in retrieved_ids else None
     return {
-        "question": question,
-        "gold_answer_id": gold_answer_id,
         "retrieved_ids": retrieved_ids,
         "rank": rank,
         "reciprocal_rank": 1 / rank if rank is not None else 0.0,
+    }
+
+
+def run_experiment(
+    eval_rows: list[dict],
+    retrieve_ids_fn: Callable[[str], list[int]],
+    gold_id_fn: Callable[[int], int] | None = None,
+) -> list[dict]:
+    """Generic scoring loop shared by the baseline and every Phase 5
+    experiment: retrieve_ids_fn(question) supplies ranked candidate ids at
+    whatever granularity/mechanism the experiment tests, gold_id_fn remaps
+    the original answer_id if that granularity changed (identity if None)."""
+    records = []
+    for row in eval_rows:
+        original_answer_id = row["answer_id"]
+        gold_id = gold_id_fn(original_answer_id) if gold_id_fn else original_answer_id
+        retrieved_ids = retrieve_ids_fn(row["question"])
+        record = {
+            "question": row["question"],
+            "original_answer_id": original_answer_id,
+            "gold_answer_id": gold_id,
+        }
+        record.update(score_retrieved_ids(gold_id, retrieved_ids))
+        records.append(record)
+    return records
+
+
+def evaluate_query(question: str, gold_answer_id: int, k: int = TOP_K) -> dict:
+    chunks = retrieve(question, top_k=k)
+    retrieved_ids = [c.answer_id for c in chunks]
+    return {
+        "question": question,
+        "original_answer_id": gold_answer_id,
+        "gold_answer_id": gold_answer_id,
+        **score_retrieved_ids(gold_answer_id, retrieved_ids),
     }
 
 
@@ -93,7 +137,7 @@ def find_paraphrase_answer_ids(eval_rows: list[dict]) -> set[int]:
     return {answer_id for answer_id, qs in questions_by_answer.items() if len(qs) > 1}
 
 
-def print_markdown_table(aggregate: dict, paraphrase: dict) -> None:
+def print_markdown_table(aggregate: dict, paraphrase: dict, label: str = "Baseline") -> None:
     rows = [
         ("Recall@1", "recall@1"),
         ("Recall@3", "recall@3"),
@@ -101,10 +145,11 @@ def print_markdown_table(aggregate: dict, paraphrase: dict) -> None:
         ("MRR", "mrr"),
         ("Hit@1", "hit@1"),
     ]
+    print(f"### {label}")
     print(f"| Metric | All queries (n={aggregate['n']}) | Paraphrase-pair subset (n={paraphrase['n']}, illustrative) |")
     print("|---|---|---|")
-    for label, key in rows:
-        print(f"| {label} | {aggregate[key]:.3f} | {paraphrase[key]:.3f} |")
+    for row_label, key in rows:
+        print(f"| {row_label} | {aggregate[key]:.3f} | {paraphrase[key]:.3f} |")
     print()
     print("Hit@1 ≡ Recall@1 above: with exactly one gold answer per query, the two formulas coincide.")
     print("Paraphrase-pair subset is 3 answer_ids × 2 differently-worded questions each (n=6) — illustrative only, not statistically meaningful.")
@@ -118,7 +163,7 @@ def main() -> None:
     get_client().close()
 
     aggregate = compute_metrics(records)
-    paraphrase_records = [r for r in records if r["gold_answer_id"] in paraphrase_answer_ids]
+    paraphrase_records = [r for r in records if r["original_answer_id"] in paraphrase_answer_ids]
     paraphrase = compute_metrics(paraphrase_records)
 
     results = {

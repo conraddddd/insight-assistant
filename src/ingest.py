@@ -74,13 +74,11 @@ def dedupe_and_split(records: list[dict]) -> tuple[list[dict], list[dict]]:
     return kb_records, eval_records
 
 
-def embed_answers(kb_records: list[dict]) -> list[list[float]]:
-    """One embedding call per KB record. Each answer (91-219 chars) is already
-    well below any sensible chunk size, so there's no sub-splitting here — one
-    answer is one chunk is one vector. Batching all answers into a single
-    ollama.embed() call (rather than one call per record) cuts round-trips to
-    the local Ollama server from 86 to 1."""
-    texts = [r["answer"] for r in kb_records]
+def embed_texts(texts: list[str]) -> list[list[float]]:
+    """Batching all texts into a single ollama.embed() call (rather than one
+    call per text) cuts round-trips to the local Ollama server. Shared by
+    embed_answers() below and by Phase 5's chunk-concatenation experiment,
+    which embeds concatenated multi-answer chunk text through the same path."""
     response = ollama.embed(model=settings.embed_model, input=texts)
     embeddings = response.embeddings
     assert len(embeddings[0]) == EMBED_DIM, (
@@ -89,17 +87,26 @@ def embed_answers(kb_records: list[dict]) -> list[list[float]]:
     return embeddings
 
 
-def build_collection(client: QdrantClient) -> None:
+def embed_answers(kb_records: list[dict]) -> list[list[float]]:
+    """One embedding call for all KB records. Each answer (91-219 chars) is
+    already well below any sensible chunk size, so there's no sub-splitting
+    here — one answer is one chunk is one vector."""
+    return embed_texts([r["answer"] for r in kb_records])
+
+
+def build_collection(client: QdrantClient, collection_name: str = settings.collection_name) -> None:
     """(Re)create the collection. VectorParams needs the embedding dimension
     (1024 for mxbai-embed-large) and a distance metric — cosine, since
     mxbai-embed-large is trained/normalized for cosine similarity, not
-    Euclidean or dot product. recreate_collection semantics: if the collection
-    already exists (e.g. re-running ingest during development) it's dropped
-    and rebuilt, so this script is idempotent."""
-    if client.collection_exists(settings.collection_name):
-        client.delete_collection(settings.collection_name)
+    Euclidean or dot product. Collection name is parameterized so Phase 5
+    experiments can build alternate collections (e.g. kb_docs_concat) in the
+    same local qdrant_db path without touching the baseline kb_docs
+    collection. delete+create (rather than a bare create) makes this
+    idempotent — re-running ingest during development just rebuilds."""
+    if client.collection_exists(collection_name):
+        client.delete_collection(collection_name)
     client.create_collection(
-        collection_name=settings.collection_name,
+        collection_name=collection_name,
         vectors_config=VectorParams(size=EMBED_DIM, distance=Distance.COSINE),
     )
 

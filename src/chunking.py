@@ -189,3 +189,18 @@ def load_answer_by_id() -> dict[int, str]:
     faqs = load_faqs(DATA_PATH)
     kb_records, _ = dedupe_and_split(faqs)
     return {r["answer_id"]: r["answer"] for r in kb_records}
+
+
+def main() -> None:
+    chunks = build_index()
+    group_sizes = [len(c["answer_ids"]) for c in chunks]
+    print(
+        f"built {len(chunks)} chunks from {sum(group_sizes)} answers into "
+        f"'{COLLECTION_NAME}' (sizes: {sorted(set(group_sizes))}, "
+        f"counts {[group_sizes.count(s) for s in sorted(set(group_sizes))]})"
+    )
+    get_client().close()
+
+
+if __name__ == "__main__":
+    main()

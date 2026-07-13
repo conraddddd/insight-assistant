@@ -127,37 +127,56 @@ main event instead of an afterthought.
 ## Architecture
 
 ```
-Incoming email ─► embed query ─► Qdrant retrieval (top-k) ─► LLM draft (grounded + cited)
-                                        ▲
-                              knowledge base (atomic answers, embedded)
+Incoming email ─► embed query ─► Qdrant retrieval (top-5 chunks) ─► LLM draft
+                                        ▲                    (grounded + sub-answer cited, e.g. "19a")
+                    knowledge base (2-3 topically-grouped answers/chunk, embedded)
 ```
 
 - **Embeddings:** mxbai-embed-large (via Ollama)
-- **Vector store:** Qdrant
-- **Generation:** llama3 (via Ollama), prompted to answer only from retrieved context and cite sources
-- **Serving:** FastAPI `/draft` endpoint
-- **Evaluation:** labeled test set + retrieval metrics + LLM-as-judge
+- **Vector store:** Qdrant, embedded/local. Two collections: `kb_docs_concat` (production —
+  2-3 topically-related answers per chunk, grouped via greedy nearest-neighbor chaining
+  over embeddings, `src/chunking.py`) and `kb_docs` (baseline — 1 answer per chunk,
+  `src/ingest.py`, kept only as the Phase 4/5 eval reference point)
+- **Generation:** llama3 (via Ollama), prompted to answer only from retrieved context and
+  cite sources by sub-answer id (`"19a"`, `"19b"`, ...) — one id per original answer within
+  a chunk, not one blanket id per chunk (see README Findings above for why that distinction
+  matters)
+- **Serving:** FastAPI `/draft` endpoint, serving from `kb_docs_concat`
+- **Evaluation:** labeled test set + retrieval metrics + LLM-as-judge, run both as a
+  standalone baseline and against every Phase 5 retrieval candidate
 
 ## Setup
 
 ```bash
 ollama pull llama3                   # generation model
 ollama pull mxbai-embed-large        # embedding model
-ollama pull qwen2.5:7b               # LLM-as-judge model (Phase 4b eval)
+ollama pull qwen2.5:7b               # LLM-as-judge model (Phase 4b/5 eval)
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
 
-python -m src.ingest                 # embeds the index; Qdrant runs embedded/local
-                                      # (no server) and creates qdrant_db/ on first run
-uvicorn src.api:app --reload         # serve
+python -m src.ingest                 # builds kb_docs (baseline, eval reference point)
+python -m src.chunking                # builds kb_docs_concat (production collection) — a
+                                       # separate step, not folded into ingest: different
+                                       # grouping algorithm, different collection, kept
+                                       # independently reproducible/comparable
+uvicorn src.api:app --reload         # serve — reads from kb_docs_concat
 ```
 
 ## Evaluation
 
 ```bash
-python -m src.eval.retrieval_eval    # recall@k, MRR, hit@1
-python -m src.eval.answer_eval       # faithfulness, relevance, completeness (LLM-as-judge) + hallucinated citation rate
+# Baseline (single-answer-per-chunk collection)
+python -m src.eval.retrieval_eval        # recall@k, MRR, hit@1
+python -m src.eval.answer_eval           # faithfulness, relevance, completeness (LLM-as-judge) + hallucinated citation rate
+
+# Phase 5 retrieval experiments (each independent vs. baseline, not stacked)
+python -m src.eval.experiment_chunking   # chunk concatenation — builds kb_docs_concat, then scores it
+python -m src.eval.experiment_hybrid     # hybrid BM25 + vector (RRF)
+python -m src.eval.experiment_reranker   # cross-encoder reranker (top-10 -> top-5)
+
+# Answer quality of the shipped production config (chunk concat + sub-answer citations)
+python -m src.eval.answer_eval_chunking
 ```
 
 ## Project structure
@@ -165,10 +184,17 @@ python -m src.eval.answer_eval       # faithfulness, relevance, completeness (LL
 ```
 data/knowledge_base/   source KB documents
 data/eval/             test emails + reference answers / relevant-doc labels
-src/ingest.py          load, dedupe, embed, index
-src/retrieve.py        retrieval
-src/generate.py        grounded draft generation
-src/api.py             FastAPI app
-src/eval/retrieval_eval.py   recall@k, MRR, hit@1
-src/eval/answer_eval.py      LLM-as-judge (faithfulness, relevance, completeness) + hallucinated citation rate
+src/ingest.py                    load, dedupe, embed, index — baseline (kb_docs), eval reference point
+src/chunking.py                  chunk-concatenated production KB: grouping, indexing, sub-answer
+                                  citation context — what src/api.py actually serves from
+src/retrieve.py                  retrieval (embed_query/get_client shared by src/chunking.py too)
+src/generate.py                  grounded draft generation — baseline + sub-answer citation prompts
+src/api.py                       FastAPI app, serves from the production chunk-concat config
+src/eval/retrieval_eval.py       recall@k, MRR, hit@1 (baseline) + scoring helpers every Phase 5
+                                  experiment reuses
+src/eval/answer_eval.py          LLM-as-judge (baseline) + hallucinated citation rate
+src/eval/experiment_chunking.py  Phase 5: chunk concatenation retrieval eval
+src/eval/experiment_hybrid.py    Phase 5: hybrid BM25 + vector (RRF) retrieval eval
+src/eval/experiment_reranker.py  Phase 5: cross-encoder reranker retrieval eval
+src/eval/answer_eval_chunking.py Phase 5: LLM-as-judge eval against the production config
 ```
